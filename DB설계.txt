@@ -1,0 +1,9 @@
+DB 설계
+User(고객) table
+	num(회원번호), id(primary key), pass, name, nickname, birth, address, tel, date
+
+Board(상품) table
+	num, id(primary key), pass, name, title, price, content, file, date, count
+
+Comple(고객센터) table
+	num, title, content, writer, pass
