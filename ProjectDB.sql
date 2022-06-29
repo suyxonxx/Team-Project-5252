@@ -1,18 +1,18 @@
--- ìœ ì € í…Œì´ë¸”
+-- À¯Àú Å×ÀÌºí
 create table marketuser(
   num number,
   id varchar2(30) primary key,
   pass varchar2(40) not null,
   uname varchar2(20) not null,
   nickname varchar2(20) UNIQUE,
-  birth char(8), -- ìƒë…„ì›”ì¼ (YYYYMMDD)
+  birth char(8), -- »ı³â¿ùÀÏ (YYYYMMDD)
   email varchar2(30) UNIQUE,
   address varchar2(100) not null,
   phone char(13) not null,
-  profile varchar2(500), -- í”„ë¡œí•„ ì‚¬ì§„
-  udate date -- ê°€ì…ì¼ì
+  profile varchar2(500), -- ÇÁ·ÎÇÊ »çÁø
+  udate date -- °¡ÀÔÀÏÀÚ
 );
--- ìƒí’ˆ ë“±ë¡ í…Œì´ë¸”
+-- »óÇ° µî·Ï Å×ÀÌºí
 create table marketboard(
     num number,
     id varchar2(30) primary key,
@@ -21,12 +21,12 @@ create table marketboard(
     title varchar2(100) not null,
     price number not null,
     content varchar2(2000) not null,
-    image varchar2(500), -- ìƒí’ˆ ì‚¬ì§„
-    bdate date, -- ê¸€ ì‘ì„± ì¼ì
+    image varchar2(500), -- »óÇ° »çÁø
+    bdate date, -- ±Û ÀÛ¼º ÀÏÀÚ
     count number,
-    heart number -- ì°œí•˜ê¸°
+    heart number -- ÂòÇÏ±â
 );
--- ê³ ê°ì„¼í„° í…Œì´ë¸”
+-- °í°´¼¾ÅÍ Å×ÀÌºí
 create table customercenter(
     num number,
     id varchar2(30) primary key,
@@ -35,27 +35,27 @@ create table customercenter(
     title varchar2(100) not null,
     content varchar2(2000) not null
 );
--- ìœ ì € ì‹œí€€ìŠ¤
+-- À¯Àú ½ÃÄö½º
 create sequence user_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ìƒí’ˆ ì‹œí€€ìŠ¤
+-- »óÇ° ½ÃÄö½º
 create sequence board_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ê³ ê°ì„¼í„° ì‹œí€€ìŠ¤
+-- °í°´¼¾ÅÍ ½ÃÄö½º
 create sequence cus_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
 
--- ëŒ“ê¸€ í…Œì´ë¸”
+-- ´ñ±Û Å×ÀÌºí
 create table reply(
-   num number,  -- ê¸€ ë²ˆí˜¸
+   num number,  -- ±Û ¹øÈ£
    name varchar2(20) not null,
    pass varchar2(40) not null,
-   cdate date not null, -- ëŒ“ê¸€ ë‹¨ ì‹œê°„
+   cdate date not null, -- ´ñ±Û ´Ü ½Ã°£
    reply varchar2(1000) not null,
    profile varchar2(500)
 );
 
--- ì±„íŒ… í…Œì´ë¸”
+-- Ã¤ÆÃ Å×ÀÌºí
 create table chat(
    num number,
    id varchar2(30) primary key,
