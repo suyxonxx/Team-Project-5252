@@ -12,6 +12,9 @@ create table marketuser(
   profile varchar2(500), -- 프로필 사진
   udate date -- 가입일자
 );
+insert into marketuser(num,id,pass,uname,nickname,birth,email,address,phone,udate) 
+    values(user_seq.nextval,'admin','1234','관리자','관리자1','19940430','ugiugi94@naver.com','수원시 권선구','01031734790',sysdate);
+select * from marketuser;
 -- 상품 등록 테이블
 create table marketboard(
     num number,
