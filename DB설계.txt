@@ -7,10 +7,12 @@ create table marketuser(
   nickname varchar2(20) UNIQUE,
   birth char(8), -- 생년월일 (YYYYMMDD)
   email varchar2(30) UNIQUE,
+  sex varchar2(8), -- 성별 남성(male), 여성(female)
   address varchar2(100) not null,
   phone char(13) not null,
-  profile varchar2(500), -- 프로필 사진
-  udate date -- 가입일자
+  profile varchar2(500) default OE.jsp, -- 프로필 사진
+  udate date default sysdate, -- 가입일자
+  admin number(1) default 1 -- 관리자 0, 일반 회원 1
 );
 -- 상품 등록 테이블
 create table marketboard(
@@ -24,7 +26,7 @@ create table marketboard(
     image varchar2(500), -- 상품 사진
     bdate date, -- 글 작성 일자
     count number,
-    heart number -- 찜하기
+    heart number -- 찜하기(시퀀스 이용해서 0~1 반복되게)
 );
 -- 고객센터 테이블
 create table customercenter(
