@@ -18,6 +18,7 @@ import lombok.Data;
 	  phone char(13) not null,
 	  profile varchar2(500), -- 프로필 사진
 	  udate date -- 가입일자
+	  admin number default 1 -- 관리자 0, 일반 회원 1
 );
  * */
 @Data
@@ -33,4 +34,5 @@ public class OEMarketUserVO {
 	private String phone;
 	private File profile;
 	private Date udate;
+	private int admin;
 }
