@@ -7,14 +7,20 @@ create table marketuser(
   nickname varchar2(20) UNIQUE,
   birth char(8), -- 생년월일 (YYYYMMDD)
   email varchar2(30) UNIQUE,
+  sex varchar2(8), -- 성별 남성(male), 여성(female)
   address varchar2(100) not null,
   phone char(13) not null,
   profile varchar2(500), -- 프로필 사진
-  udate date -- 가입일자
+  udate date default sysdate, -- 가입일자
+  admin number(1) default 1 -- 관리자 0, 일반 회원 1
 );
-insert into marketuser(num,id,pass,uname,nickname,birth,email,address,phone,udate) 
-    values(user_seq.nextval,'admin','1234','관리자','관리자1','19940430','ugiugi94@naver.com','수원시 권선구','01031734790',sysdate);
+
+desc marketuser;
+insert into marketuser(num,id,pass,uname,nickname,birth,email,address,phone,udate, admin) 
+    values(user_seq.nextval,'admin','1234','관리자','관리자1','19940430','ugiugi94@naver.com','수원시 권선구','01031734790',sysdate, 1);
 select * from marketuser;
+commit;
+drop table marketuser;
 -- 상품 등록 테이블
 create table marketboard(
     num number,
