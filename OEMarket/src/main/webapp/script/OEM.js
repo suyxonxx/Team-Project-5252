@@ -67,3 +67,20 @@ function idok(){
    opener.form.reid.value = document.form.id.value;
    self.close();
 }
+
+function passChk() {
+	if(document.form.pass.value.length = 0){
+		alert("비밀번호를 입력해주세요.");
+	    form.pass.focus();
+		return false;
+	}
+	if(document.form.pass.value != document.form.passchk.value){
+		alert("비밀번호가 일치하지 않습니다. 비밀번호를 다시 입력해주세요.");
+	    form.pass.focus();
+	   	return false;
+	}
+	else{
+		alert("회원 탈퇴가 완료되었습니다. 지금까지 오이마켓과 함께해주셔서 감사합니다.");
+		return true;
+	}
+}

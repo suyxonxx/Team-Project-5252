@@ -35,8 +35,8 @@
 			<th colspan="2" align="left"><h2>개인 정보 보호</h2></th>
 		</tr>
 		<tr>
-			<td><a href="#">개인 정보 수정</a></td>
-			<td><a href="#">회원 탈퇴</a></td>
+			<td><a href="userUpdate.jsp">개인 정보 수정</a></td>
+			<td><a href="withdrawal.jsp">회원 탈퇴</a></td>
 		</tr>
 	</table>
 	<br><br>
@@ -54,7 +54,7 @@
 						<td>판매 횟수</td>
 					</tr>
 					<tr>
-						<td><a href="#">50</a></td>
+						<td><a href="sales.jsp">50</a></td>
 					</tr>
 				</table>
 			</td>
@@ -64,7 +64,7 @@
 						<td>구매 횟수</td>
 					</tr>
 					<tr>
-						<td><a href="#">50</a></td>
+						<td><a href="purchase.jsp">50</a></td>
 					</tr>
 				</table>
 			</td>
@@ -74,7 +74,7 @@
 						<td>찜♥ 개수</td>
 					</tr>
 					<tr>
-						<td><a href="#">50</a></td>
+						<td><a href="heart.jsp">50</a></td>
 					</tr>
 				</table>
 			</td>
