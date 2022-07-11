@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<property name="mappings">
+		<props>
+			<prop key="/login.do">login</prop>
+			<prop key="/getMarketList.do">getMarketList</prop>
+			<prop key="/getMarket.do">getMarket</prop>
+			<prop key="/insertMarket.do">insertMarket</prop>
+			<prop key="/updateMarket.do">updateMarket</prop>
+			<prop key="/deleteMarket.do">deleteMarket</prop>
+			<prop key="/logout.do">logout</prop>
+		</props>
+	</property>
+</bean>
+
+<bean id="login" class="com.ezen.market.OEM.LoginController"></bean>
+<bean id="getMarketList" class="com.ezen.market.OEM.InsertMarketController"></bean>
+<bean id="getMarket" class="com.ezen.market.OEM.GetMarketController"></bean>
+<bean id="insertMarket" class="com.ezen.market.OEM.InsertMarketController"></bean>
+<bean id="updateMarket" class="com.ezen.market.OEM.UpdateMarketController"></bean>
+<bean id="deleteMarket" class="com.ezen.market.OEM.DeleteMarketController"></bean>
+<bean id="logout" class="com.ezen.market.OEM.LogoutController"></bean>
+
+<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/WEB-INF/board/"></property>
+	<property name="suffix" value=".jsp"></property>
+</bean>
+
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <property name="maxUploadSize" value="5242880000"></property>
+</bean>
+
+</beans>
