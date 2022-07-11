@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,22 +41,33 @@ public class BoardController {
 	
 	
 //   글 등록
-   @RequestMapping("/uploadFile.do")
-   public String insertBoard(OEMarketBoardVO vo) throws IOException {
-	   MultipartFile uploadFile = vo.getImage();
+   @RequestMapping(value="/uploadFile.do", method=RequestMethod.POST)
+   public String insertBoard(OEMarketBoardVO vo,
+		   @RequestParam("image") MultipartFile image) throws IOException {
+	  
+	   /*
+	     MultipartFile uploadFile = vo.getUploadFile();
+		  if(!uploadFile.isEmpty()) {
+			  String fileNmae = uploadFile.getOriginalFilename();
+			  uploadFile.transferTo(new File("C:/upload/"+fileNmae));
+		  }
+	    */
+	   
+	   
+	   image = vo.getImage();
+	   if(!image.isEmpty()) {
+		   String fileName = image.getOriginalFilename();
+		   image.transferTo(new File("c:/upload/"+fileName));
+	   }
 	   System.out.println("image: " + vo.getImage());
 	   System.out.println("title: " + vo.getTitle());
-	   System.out.println("title: " + vo.getId());
-	   System.out.println("title: " + vo.getPass());
-	   System.out.println("title: " + vo.getName());
-	   System.out.println("title: " + vo.getContent());
-	   if(!uploadFile.isEmpty()) {
-		   String fileName = uploadFile.getOriginalFilename();
-		   uploadFile.transferTo(new File("c:/upload/"+fileName));
-	   }
+	   System.out.println("id: " + vo.getId());
+	   System.out.println("pass: " + vo.getPass());
+	   System.out.println("name: " + vo.getName());
+	   System.out.println("content: " + vo.getContent());
 	   boardService.insertBoard(vo);
 //	   return "getBoardList.do";
-	   return null;
+	   return "index.jsp";
 	   
    } //end of insertBoard
 

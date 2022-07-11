@@ -17,9 +17,9 @@ ul li {
 
 	<div style="text-align: center;">상품 등록</div>
 	<form action="uploadFile.do" method="post" enctype="multipart/form-data"	>
-		<input type="hidden" name="id" value="456">
-		<input type="hidden" name="pass" value="456">
-		<input type="hidden" name="name" value="456">
+		<input type="hidden" name="id" value="admin">
+		<input type="hidden" name="pass" value="1234">
+		<input type="hidden" name="name" value="관리자">
 		<table style="padding: 10px; margin: 0 auto;">
 			<tr>
 				<th style="text-align: center;">제목</th>
