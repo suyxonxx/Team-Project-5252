@@ -1,76 +1,85 @@
--- À¯Àú Å×ÀÌºí
+--ìœ ì €í…Œì´ë¸”
 create table marketuser(
-  num number,
-  id varchar2(30) primary key,
-  pass varchar2(40) not null,
-  uname varchar2(20) not null,
-  nickname varchar2(20) UNIQUE,
-  birth char(8), -- »ı³â¿ùÀÏ (YYYYMMDD)
-  email varchar2(30) UNIQUE,
-  sex varchar2(8), -- ¼ºº° ³²¼º(male), ¿©¼º(female)
-  address varchar2(100) not null,
-  phone char(13) not null,
-  profile varchar2(500), -- ÇÁ·ÎÇÊ »çÁø
-  udate date default sysdate, -- °¡ÀÔÀÏÀÚ
-  admin number(1) default 1 -- °ü¸®ÀÚ 0, ÀÏ¹İ È¸¿ø 1
+    us_num number,
+    us_id varchar2(30) primary key,
+    us_pass varchar2(40) not null,
+    us_name varchar2(20) not null,
+    us_nickname varchar2(20) unique,
+    us_birth char(8),
+    us_email varchar2(30),
+    us_gender varchar2(8), --ë‚¨ì„±(male), ì—¬ì„±(female)
+    us_address varchar2(100) not null,
+    us_phone char(13) not null,
+    us_joindate date default sysdate,
+    us_grade number(1) default 1 -- ê´€ë¦¬ì(0), ì¼ë°˜íšŒì›(1)
 );
 
-desc marketuser;
-insert into marketuser(num,id,pass,uname,nickname,birth,email,address,phone,udate, admin) 
-    values(user_seq.nextval,'admin','1234','°ü¸®ÀÚ','°ü¸®ÀÚ1','19940430','ugiugi94@naver.com','¼ö¿ø½Ã ±Ç¼±±¸','01031734790',sysdate, 1);
-select * from marketuser;
-commit;
-drop table marketuser;
--- »óÇ° µî·Ï Å×ÀÌºí
+--ë§ˆì´í˜ì´ì§€
+create table mypage(
+    my_id varchar2(30),
+    my_image varchar2(500),
+    my_intro varchar2(1000),
+    my_nickname varchar2(20) unique,
+    constraint fk_my_id foreign key (my_id) references marketuser (us_id)
+    on delete cascade
+);
+
+--êµ¬ë§¤ë‚´ì—­
+create table buyboard(
+    buy_id varchar2(30),
+    buy_title varchar2(100),
+    buy_price number,
+    buy_seller varchar2(30),
+    buy_buydate date default sysdate,
+    constraint fk_buy_id foreign key (buy_id) references mypage (my_nickname)
+    on delete cascade
+);
+
+--íŒë§¤ë‚´ì—­
+create table sellboard(
+    sel_id varchar2(30),
+    sel_title varchar2(100),
+    sel_price number,
+    sel_buyer varchar2(30),
+    sel_selldate date default sysdate,
+    constraint fk_sell_id foreign key (sel_id) references mypage (my_nickname)
+    on delete cascade
+);
+
+--ì°œëª©ë¡
+create table heartboard(
+    he_id varchar2(30),
+    he_title varchar2(100),
+    he_price number,
+    he_seller varchar2(30),
+    constraint fk_heart_id foreign key (he_id) references mypage (my_nickname)
+    on delete cascade
+);
+
+--ìƒí’ˆ í…Œì´ë¸”
 create table marketboard(
-    num number,
-    id varchar2(30) primary key,
-    pass varchar2(40) not null,
-    name varchar2(20) not null,
-    title varchar2(100) not null,
-    price number not null,
-    content varchar2(2000) not null,
-    image varchar2(500), -- »óÇ° »çÁø
-    bdate date, -- ±Û ÀÛ¼º ÀÏÀÚ
-    count number,
-    heart number -- ÂòÇÏ±â
-);
--- °í°´¼¾ÅÍ Å×ÀÌºí
-create table customercenter(
-    num number,
-    id varchar2(30) primary key,
-    pass varchar2(40) not null,
-    name varchar2(20) not null,
-    title varchar2(100) not null,
-    content varchar2(2000) not null
-);
--- À¯Àú ½ÃÄö½º
-create sequence user_seq
-START with 1 INCREMENT by 1 MINVALUE 1;
--- »óÇ° ½ÃÄö½º
-create sequence board_seq
-START with 1 INCREMENT by 1 MINVALUE 1;
--- °í°´¼¾ÅÍ ½ÃÄö½º
-create sequence cus_seq
-START with 1 INCREMENT by 1 MINVALUE 1;
-
--- ´ñ±Û Å×ÀÌºí
-create table reply(
-   num number,  -- ±Û ¹øÈ£
-   name varchar2(20) not null,
-   pass varchar2(40) not null,
-   cdate date not null, -- ´ñ±Û ´Ü ½Ã°£
-   reply varchar2(1000) not null,
-   profile varchar2(500)
+    bo_num number primary key,
+    bo_title varchar2(100) not null,
+    bo_nickname varchar2(20) unique,
+    bo_price number not null,
+    bo_content varchar(2000) not null,
+    bo_image varchar2(500),
+    bo_regdate date default sysdate,
+    bo_count number default 0,
+    bo_heart number,
+    bo_heartcount number,
+    bo_category varchar2(50),
+    bo_address varchar2(100) not null,
+    constraint fk_board_id foreign key (bo_num) references marketuser (us_id)
+    on delete cascade
 );
 
--- Ã¤ÆÃ Å×ÀÌºí
-create table chat(
-   num number,
-   id varchar2(30) primary key,
-   name varchar2(20) not null,
-   chat varchar2(1000) not null,
-   profile varchar2(500),
-   chdate date not null,
-   image varchar2(500)
+--ê³ ê°ì„¼í„°
+create table center(
+    ce_num number primary key,
+    ce_pass varchar(40),
+    ce_nickname varchar2(20),
+    ce_title varchar2(100),
+    ce_content varchar2(2000),
+    ce_id varchar2(30)
 );
