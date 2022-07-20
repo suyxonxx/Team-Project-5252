@@ -24,7 +24,7 @@ create table marketboard(
     bo_nickname varchar2(20),
     bo_price number not null,
     bo_content varchar(2000) not null,
-    bo_image1 varchar2(500),
+    bo_image1 varchar2(500), -- C://oe_upload
 	bo_image2 varchar2(500),
 	bo_image3 varchar2(500),
     bo_regdate date default sysdate,

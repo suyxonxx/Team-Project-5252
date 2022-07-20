@@ -1,5 +1,5 @@
 package com.oe.mapper;
 
-public class MyPageMapper {
+public interface MyPageMapper {
 
 }

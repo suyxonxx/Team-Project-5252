@@ -1,5 +1,5 @@
 package com.oe.mapper;
 
-public class MarketBoardMapper {
+public interface MarketBoardMapper {
 
 }
