@@ -1,5 +1,5 @@
 package com.oe.mapper;
 
-public interface BuyBoardMapper {
+public class BuyBoardMapper {
 
 }

@@ -1,5 +1,5 @@
 package com.oe.mapper;
 
-public interface CenterReplyMapper {
+public class CenterReplyMapper {
 
 }
