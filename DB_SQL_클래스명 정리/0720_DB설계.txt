@@ -90,7 +90,7 @@ create table center(
     ce_title varchar2(100),
     ce_content varchar2(2000),
     ce_id varchar2(30),
-	constraint fk_board_id foreign key (ce_id) references marketuser (us_id)
+	constraint fk_center_id foreign key (ce_id) references marketuser (us_id)
     on delete cascade
 );
 
