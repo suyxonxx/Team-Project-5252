@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oe.mapper.MarketUserMapper">
+	<select id="">
+		select * from marketuser order by us_num
+	</select>
+
+	<insert id="joinUser">
+		insert into marketuser(us_num, us_id, us_pass, us_name, us_nickname, us_birth, us_email, us_gender, 
+		us_address1, us_address2, us_address3, us_phone) 
+		values((select nvl(max(us_num), 0)+1 from marketuser),#{us_id},#{us_pass},#{us_name},#{us_nickname},#{us_birth},#{us_email},#{us_gender},
+		#{us_address1},#{us_address2},#{us_address3},#{us_phone})
+	</insert>
+</mapper>

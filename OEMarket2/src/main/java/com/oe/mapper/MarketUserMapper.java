@@ -1,5 +1,9 @@
 package com.oe.mapper;
 
-public class MarketUserMapper {
+import com.oe.domain.MarketUserVO;
 
+public interface MarketUserMapper {
+	
+	public void joinUser(MarketUserVO vo);
+	
 }
