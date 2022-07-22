@@ -30,4 +30,9 @@
 		where us_num = #{us_num}
 	</update>
 	
+	<select id="readUser" resultType="com.oe.domain.MarketUserVO">
+		select * from marketuser where us_id = #{us_id}
+	</select>
+	
+	
 </mapper>

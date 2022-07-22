@@ -1,6 +1,7 @@
 package com.oe.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,14 +29,15 @@ public class MarketUserController {
 	}
 	
 	@GetMapping({"get","update"})
-	public void getUser() {
-		
+	public void getUser(String us_id, Model model) {
+		log.info("getUser : " + us_id);
+		model.addAttribute("user", userService.get(us_id));  
 		
 	}
 	
 	@PostMapping("update")
 	public void updateUser(MarketUserVO vo) {
-		log.info("vo : " + vo);
+		log.info("update vo : " + vo);
 		userService.modify(vo);
 	}
 	

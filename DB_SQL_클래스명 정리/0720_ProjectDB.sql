@@ -24,7 +24,7 @@ create table marketuser(
     us_joindate date default sysdate,
     us_grade number(1) default 1 -- 관리자(0), 일반회원(1)
 );
-select * from marketuser;
+select * from marketuser where us_id = 'id345';
 update marketuser set 
 us_id = 'id345',
 us_pass = '3456',

@@ -6,4 +6,5 @@ public interface MarketUserMapper {
 	
 	public void joinUser(MarketUserVO vo);
 	public void updateUser(MarketUserVO vo);
+	public MarketUserVO readUser(String us_id);
 }

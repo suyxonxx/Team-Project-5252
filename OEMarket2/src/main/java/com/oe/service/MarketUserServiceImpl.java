@@ -22,9 +22,6 @@ public class MarketUserServiceImpl implements MarketUserService{
 		usermapper.joinUser(vo);
 	}
 
-	@Override
-	public void get(Long us_num) {
-	}
 
 	@Override
 	public List<MarketUserVO> getList() {
@@ -40,6 +37,13 @@ public class MarketUserServiceImpl implements MarketUserService{
 
 	@Override
 	public void remove(Long us_num) {
+	}
+
+
+	@Override
+	public MarketUserVO get(String us_id) {
+		log.info("get====================");
+		return usermapper.readUser(us_id);
 	}
 
 }
