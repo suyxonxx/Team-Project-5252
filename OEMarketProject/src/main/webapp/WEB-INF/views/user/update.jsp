@@ -19,11 +19,11 @@
         <table >
             <tr>
                 <th>아이디</th>
-                <td><input type="text" name="us_id" value="${user.us_id}" size="35"></td>
+                <td><input type="text" readonly="readonly" name="us_id" value="${user.us_id}" size="35"></td>
             </tr>
             <tr>
                 <th>비밀번호</th>
-                <td colspan="2"><input type="password" name="us_pass" value="${user.us_pass}" size="35"></td>
+                <td colspan="2"><input type="password" readonly="readonly" name="us_pass" value="${user.us_pass}" size="35"></td>
             </tr>
             <tr>
                 <th>비밀번호 확인</th>
@@ -51,10 +51,6 @@
             <tr>
                 <td colspan="3" align="center" style="padding-left: 106px; " >
                 <input type="text" value="${user.us_address2}" name="us_address2" value="#" size="35"  readonly></td>
-            </tr>
-            <tr>
-                <td colspan="3" align="center" style="padding-left: 106px; ">
-                <input type="text" value="${user.us_address3}" name="us_address3" size="35"></td>
             </tr>
             <tr>
                 <th>전화번호</th>

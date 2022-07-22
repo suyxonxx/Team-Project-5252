@@ -33,7 +33,6 @@ public class MarketUserVO {
 	private String us_gender;
 	private String us_address1;
 	private String us_address2;
-	private String us_address3;
 	private String us_phone;
 	private Date us_joindate;
 	private String us_grade;

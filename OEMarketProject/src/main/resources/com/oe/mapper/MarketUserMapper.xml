@@ -10,9 +10,9 @@
 
 	<insert id="joinUser">
 		insert into marketuser(us_num, us_id, us_pass, us_name, us_nickname, us_birth, us_email, us_gender, 
-		us_address1, us_address2, us_address3, us_phone) 
+		us_address1, us_address2, us_phone) 
 		values((select nvl(max(us_num), 0)+1 from marketuser),#{us_id},#{us_pass},#{us_name},#{us_nickname},#{us_birth},#{us_email},#{us_gender},
-		#{us_address1},#{us_address2},#{us_address3},#{us_phone})
+		#{us_address1},#{us_address2},#{us_phone})
 	</insert>
 	
 	<update id="updateUser">
@@ -25,7 +25,6 @@
 		us_email = #{us_email},
 		us_address1 = #{us_address1},
 		us_address2 = #{us_address2},
-		us_address3 = #{us_address3},
 		us_phone = #{us_phone}
 		where us_num = #{us_num}
 	</update>
