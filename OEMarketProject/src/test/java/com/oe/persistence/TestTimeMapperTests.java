@@ -1,4 +1,4 @@
-package org.zerock.persistence;
+package com.oe.persistence;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
